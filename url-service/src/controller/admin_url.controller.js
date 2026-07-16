@@ -12,7 +12,7 @@ async function AdminGetAllURLs(req, res) {
         const skip = (page - 1) * limit;
 
        
-        const result = await urlDB.find({}).skip(skip).limit(limit);
+        const result = await URLDB.find().skip(skip).limit(limit);
 
         if (!result || result.length === 0) {
             return response(res, 404, false, "No URLs Found");
@@ -34,7 +34,7 @@ async function AdminGetAllURLs(req, res) {
 async function AdminGetURLByID(req, res) {
     try {
 
-        const result = await urlDB.findById(req.params.id);
+        const result = await URLDB.findById(req.params.id);
 
         if (!result) {
             return response(res, 404, false, "No Data is Found Related to This ID"
@@ -49,12 +49,12 @@ async function AdminGetURLByID(req, res) {
     }
 }
 
-async function AdminUpdateURL(req, res) {
+async function AdminUpdateURLByID(req, res) {
     try {
         const { originalURL, customAlias, status } = req.body;
 
 
-        const result = await urlDB.findByIdAndUpdate(
+        const result = await URLDB.findByIdAndUpdate(
             req.params.id,
             {
                 originalURL,
@@ -76,10 +76,10 @@ async function AdminUpdateURL(req, res) {
     }
 }
 
-async function AdminDeleteURL(req, res) {
+async function AdminDeleteURLByID(req, res) {
     try {
 
-        const result = await urlDB.findByIdAndDelete(req.params.id);
+        const result = await URLDB.findByIdAndDelete(req.params.id);
 
         if (!result) {
             return response(res, 404, false, "URL not found Related to This ID"
@@ -94,4 +94,4 @@ async function AdminDeleteURL(req, res) {
     }
 }
 
-module.exports = {  AdminGetAllURLs, AdminGetURLByID, AdminUpdateURL, AdminDeleteURL };
+module.exports = {  AdminGetAllURLs, AdminGetURLByID, AdminUpdateURLByID, AdminDeleteURLByID };

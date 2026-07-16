@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const urlDB = require("../config/db")
 
 
 const URLSchema = new mongoose.Schema({
@@ -7,7 +6,7 @@ const URLSchema = new mongoose.Schema({
 
     userID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Users",
         required: true
     },
     originalURL: {
@@ -23,10 +22,6 @@ const URLSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         lowercase: true
-    },
-    clickCount: {
-        type: Number,
-        default: 0
     },
     status: {
         type: String,

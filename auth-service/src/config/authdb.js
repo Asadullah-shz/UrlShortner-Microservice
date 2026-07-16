@@ -2,13 +2,15 @@ require("dotenv").config()
 const mongoose=require("mongoose")
 
 
-async function AuthDB() {
+const Connect=async function AuthDatabase() {
 
     try {
          
-        await mongoose.connect(process.env.MONGO_URL)
+         const connection = await mongoose.connect(process.env.MONGO_URL)
     
     console.log("Auth DB Connected Successfully")
+
+    return connection
 
     } catch (error) {
         
@@ -21,4 +23,4 @@ async function AuthDB() {
 }
 
 
-module.exports=AuthDB
+module.exports= Connect

@@ -45,6 +45,19 @@ After the API Gateway is built, we will introduce a dedicated **Analytics Servic
 - **Referrer**: Where the click came from.
 - **Timestamp**: Exact time of the click.
 
+### Current Progress (Where to start tomorrow)
+**Completed Today:**
+- [x] Initialized `analytics-service` server, nodemon, and express.
+- [x] Configured `.env` and `analyticDB.js` to successfully connect to MongoDB.
+- [x] Created `AnalyticsModel` with `urlId`, `userID`, `shortCode`, and `clickedAt` references.
+- [x] Built the `createClickRecord` service to isolate database logic.
+- [x] Created the Controller and Express Router for `POST /analytics/click`.
+- [x] Fixed routing crashes (`AnalyticsController.RecordClick`).
+
+**Next Steps for Tomorrow Morning:**
+- [ ] Update the `url-service` (or gateway) to send an HTTP POST request to `http://localhost:6000/analytics/click` right before it redirects a user.
+- [ ] Implement analytics fetching endpoints (e.g., `GET /analytics/:shortCode` to count documents and return the total number of clicks to the frontend).
+- [ ] (Optional) Add the remaining fields to the schema like IP Address, Device, and Referrer.
 ---
 
 ## 3.  Docker Compose Integration
@@ -90,7 +103,7 @@ This ensures that if the Analytics Service goes down, the URL Service continues 
 ✅ JWT Integration
       │
       ▼
-🔜 API Gateway
+✅ API Gateway
       │
       ▼
 🔜 Analytics Service

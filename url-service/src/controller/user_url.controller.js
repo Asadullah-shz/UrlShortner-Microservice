@@ -2,7 +2,7 @@ require("dotenv").config();
 const { createShortURL } = require("../services/url.service");
 const { validateURL } = require("../utils/validators");
 const response = require("../utils/response");
-const urlDB = require("../model/url");
+const URLDB = require("../model/url");
 
 async function ShortURL(req, res, next) {
     try {
@@ -42,7 +42,7 @@ async function GetMyURLs(req, res) {
         const limit = parseInt(req.query.limit) || 10;
         const skip = (page - 1) * limit;
 
-        const result = await urlDB.find({ userID }).skip(skip).limit(limit);
+        const result = await URLDB.find({ userID }).skip(skip).limit(limit);
         
         if (!result || result.length === 0) {
             return response(res, 404, false, "No URLs Found");
@@ -64,7 +64,7 @@ async function GetMyURLsByID(req, res) {
         }
 
     
-        const result = await urlDB.findOne({ _id: req.params.id, userID });
+        const result = await URLDB.findOne({ _id: req.params.id, userID });
         
         if (!result) {
             return response(res, 404, false, "No Data is Found About This User");
@@ -91,7 +91,7 @@ async function UpdateURL(req, res) {
             userID: userID 
         };
 
-        const result = await urlDB.findOneAndUpdate(filter, {
+        const result = await URLDB.findOneAndUpdate(filter, {
             originalURL, 
             customAlias,
             status,
@@ -122,7 +122,7 @@ async function DeleteURL(req, res) {
         };
 
         
-        const result = await urlDB.findOneAndDelete(filter); 
+        const result = await URLDB.findOneAndDelete(filter); 
         
         if (!result) {
             return response(res, 404, false, "URL not found Related to This ID");

@@ -1,21 +1,21 @@
 require("dotenv").config()
 const app = require("../src/app.js")
-const URLDB = require("../src/config/db.js")
+const Connect = require("../src/config/urldb.js")
 const dns = require(`dns`)
 dns.setServers(["1.1.1.1", "8.8.8.8"])
 
-URLDB()
+Connect()
 
 const PORT = process.env.PORT
 
-app.listen(PORT, () => {
-    try {
+const server = app.listen(PORT, () => {
+    console.log(`URL Shortener Service is running at Port ${PORT}`);
+});
 
-        console.log(`URL Shortener Service Started on Port`, PORT)
+server.on("error", (error) => {
+    console.error("Internal Server Error:", error);
+});
 
-    }
-    catch (error) {
 
-        console.error("Error", error)
-    }
-})
+
+

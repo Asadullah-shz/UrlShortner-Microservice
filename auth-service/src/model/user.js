@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const AuthDB = require("../config/db")
+const AuthDatabase = require("../config/authdb")
 
 
 const UserSchema = new mongoose.Schema({
