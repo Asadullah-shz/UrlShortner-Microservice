@@ -2,13 +2,6 @@
 
 A production-ready, scalable URL shortener built with a microservices architecture. It demonstrates modern backend development patterns, inter-service communication, API Gateway routing, and comprehensive testing.
 
-## Why Build a URL Shortener? 
-A URL Shortener isn't just about making links smaller. In the real world, this exact architecture is used to:
-- **Improve User Experience:** Convert massive, ugly, 200-character URLs into clean, readable links that fit perfectly in SMS messages, Twitter/X posts, and emails.
-- **Marketing & Analytics:** Track user engagement. Every time a user clicks a shortened link, the Analytics Service records the click, allowing businesses to measure the success of their marketing campaigns.
-- **Link Management:** Businesses can update the original long URL at any time without changing the short link they've already printed on business cards or posted online.
-- **Brand Trust:** Custom aliases (like `yourdomain.com/sale`) increase click-through rates compared to random strings.
-
 ## System Architecture
 
 The ecosystem consists of four interconnected microservices and a testing suite:
@@ -63,3 +56,16 @@ This codebase features:
 - **Dot Notation Naming Conventions** (`auth.controller.js`, `url.routes.js`).
 - **Pluralized Standard Directories** (`controllers/`, `middlewares/`, `models/`).
 - **Separation of Concerns** (Business logic isolated in `services/`, Express configuration in `app.js`, and Server bootstrapping in `server.js`).
+
+
+## Why Build a URL Shortener? (Extra Details For the Knowledge)
+
+A URL Shortener isn't just about making links smaller. In the real world, this exact architecture is used to:
+
+- **Improve User Experience:** Convert massive, ugly, 200-character URLs into clean, readable links that fit perfectly in SMS messages, Twitter/X posts, and emails.
+
+- **Marketing & Analytics:** Track user engagement. Every time a user clicks a shortened link, the Analytics Service records the click, allowing businesses to measure the success of their marketing campaigns.
+
+- **Link Management:** Businesses can update the original long URL at any time without changing the short link they've already printed on business cards or posted online.
+
+- **Brand Trust:** Custom aliases (like `yourdomain.com/sale`) increase click-through rates compared to random strings.
